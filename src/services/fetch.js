@@ -17,6 +17,6 @@ export const fetchData = async ({ id }) => {
             price: coin.current_price
         }))
     } catch (error) {
-        console.log(error);
+        throw new Error("Error fetching data");
     }
 }

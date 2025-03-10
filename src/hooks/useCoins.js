@@ -1,12 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchData } from "../services/fetch"
 
 export function useCoins() {
     const [coins, setCoins] = useState();
+    const [loading, setLoading] = useState(false);
+    const previousId = useRef();
 
-    const getCoins = (id = "") => {
-        fetchData({ id }).then(data => setCoins(data));
-        console.log("Doing Fetch");
+    const getCoins = async (id = "") => {
+        if (previousId.current === id) return;
+        try {
+            setLoading(true);
+            previousId.current = id;
+            const coins = await fetchData({ id });
+            setCoins(coins);
+            console.log("Doing Fetch");
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     }
 
 
@@ -14,5 +26,5 @@ export function useCoins() {
         getCoins();
     }, [])
 
-    return { coins, getCoins };
+    return { coins, getCoins, loading };
 }
