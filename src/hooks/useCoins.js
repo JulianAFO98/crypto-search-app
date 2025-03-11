@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { fetchData } from "../services/fetch"
 
 export function useCoins() {
@@ -6,7 +6,7 @@ export function useCoins() {
     const [loading, setLoading] = useState(false);
     const previousId = useRef();
 
-    const getCoins = async (id = "") => {
+    const getCoins = useCallback(async (id = "") => {
         if (previousId.current === id) return;
         try {
             setLoading(true);
@@ -19,8 +19,7 @@ export function useCoins() {
         } finally {
             setLoading(false);
         }
-    }
-
+    }, []);
 
     useEffect(() => {
         getCoins();

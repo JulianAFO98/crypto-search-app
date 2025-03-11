@@ -9,14 +9,8 @@ export const fetchData = async ({ id }) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const coins = await response.json();
-        return coins.map(coin => ({
-            id: coin.id,
-            symbol: coin.symbol,
-            name: coin.name,
-            image: coin.image,
-            price: coin.current_price
-        }))
+        return coins;
     } catch (error) {
-        throw new Error("Error fetching data");
+        throw new Error("Error fetching data", error.message);
     }
 }

@@ -119,6 +119,10 @@ img {
   width: 100px;
 }
 
+.loading {
+  color: yellow;
+}
+
 li {
 
   display: flex;
@@ -134,4 +138,16 @@ li {
 h2 {
   margin: 0;
   text-align: center;
+}
+
+.details {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 70%;
+  width: 50%;
+  background-color: rgb(22, 22, 43);
+  color: coral;
+  border: 3px solid yellow;
 }
