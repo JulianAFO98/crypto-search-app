@@ -9,7 +9,11 @@ export const fetchData = async ({ id }) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const coins = await response.json();
-        return coins;
+
+        return coins.map(item => {
+            const { roi, ...newCoin } = item;
+            return newCoin;
+        });
     } catch (error) {
         throw new Error("Error fetching data", error.message);
     }
