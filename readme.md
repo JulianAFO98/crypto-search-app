@@ -11,8 +11,7 @@ useState → Para manejar el estado de la lista de criptos y el input de búsque
 useRef → Para optimizar el rendimiento evitando renderizados innecesarios en el input de búsqueda.
 useMemo → Para optimizar la búsqueda filtrando los datos sin recalcular en cada render.
 API Gratuita (sin API key)
-Puedes usar la API de CoinGecko:
-🔗 https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+Puedes usar la API de CoinGecko;
 Esta API devuelve una lista de criptomonedas con su nombre, símbolo, precio y más información.
 
 Funcionalidades
